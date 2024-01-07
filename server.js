@@ -5,16 +5,22 @@ const path = require('path')
 const bodyParser = require('body-parser')
 
 // Internal Modules Imports
-const api = require('./server/routes/api')
+const wheatherApi = require('./routes/wheatherApi')
+
+mongoose.connect("mongodb://127.0.0.1:27017/wheatherApp", {})
+.catch((err)=> console.log(err))
+
+
 
 
 const app = express()
 app.use(express.static(path.join(__dirname, 'dist')))
 app.use(express.static(path.join(__dirname, 'node_modules')))
+
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
-app.use('/wethers', api)
+app.use('/wheathers', wheatherApi)
 
 // Running the server
 const port = 3001
