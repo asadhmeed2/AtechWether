@@ -1,0 +1,1 @@
+const SERVER_API_WEATHER_ENDPOINT = 'weathers'

@@ -20,7 +20,7 @@ app.use(express.static(path.join(__dirname, 'node_modules')))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
-app.use('/wheathers', wheatherApi)
+app.use('/weathers', wheatherApi)
 
 // Running the server
 const port = 3001
