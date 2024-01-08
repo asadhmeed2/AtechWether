@@ -12,39 +12,31 @@
         <button onclick="search()">Search</button>
     </div>
 
-    <div class="weather-container"></div>
+    <div class="cities-container"></div>
 
     <script id="weather-card-template" type="text/x-handlebars-template">
         <div class="weather-card">
-            <div class="">{{addRemoveButton}}</div>
-            <div class="">{{weatherData}}</div>
-        </div>
-    </script>
-
-    <script id="delete-btn-template" type="text/x-handlebars-template">
-        <div class="remove-add-btn">
-            <button>-</button>
-        </div>
-    </script>
-
-    <script id="add-btn-template" type="text/x-handlebars-template">
-        <div class="remove-add-btn">
-            <button>+</button>
-        </div>
-    </script>
-
-    <script id="weather-data-template" type="text/x-handlebars-template">
-        <div class="weather-card-data">
-            <div class="">
-                <div class="temperature">{{temperature}}</div>
-                <div class="name">{{name}}</div>
+            <div class="btn-card-container">
+                {{#if inDB}}
+                        <span class="remove-add-btn red">-</span>
+                {{else }}
+                        <span  class="remove-add-btn green">+</span>
+                {{/if}}
             </div>
-            <div class="">
-                <div class="weather-condition-pic">
-                    <img src="http://openweathermap.org/img/wn/{{conditionPic}}@2x.png" width="{{imgWidth}}px" height="{{imgHeight}}px" alt="">
+            
+            <div class="weather-card-data">
+                <div class="">
+                    <div class="temperature">{{temperature}}</div>
+                    <div class="name">{{name}}</div>
                 </div>
-                <div class="weather-condition">{{condition}}</div>
+                <div class="">
+                    <div class="weather-condition-pic">
+                        <img src="http://openweathermap.org/img/wn/{{conditionPic}}@2x.png" width="{{imgWidth}}px" height="{{imgHeight}}px" alt="">
+                    </div>
+                    <div class="weather-condition">{{condition}}</div>
+                </div>
             </div>
+           
         </div>
     </script>
 

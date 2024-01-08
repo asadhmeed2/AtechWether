@@ -16,12 +16,13 @@ class WeatherModule{
     }
 
 
-    async search(tearm){
+    async search(term){
       
             try{
                 
-                const results = await weatherApi.searchCity(tearm)
-                return results
+                const results = await weatherApi.searchCity(term)
+                const mappedResults = results.map(item => WeatherModel.fromSearch(item))
+                return mappedResults
             }catch(e){
                 console.error(e);
             }
@@ -31,9 +32,9 @@ class WeatherModule{
 
     async getAll(){
         try{
-                
-            const results = await weatherApi.getAll()
-            return results
+            const results = await weatherApi.getAll();
+            const mappedResults = results.map(item => WeatherModel.fromApi(item))
+            return mappedResults
         }catch(e){
             console.error(e);
         }

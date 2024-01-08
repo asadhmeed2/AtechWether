@@ -1,15 +1,15 @@
-class WheatherModel {
+class WeatherModel {
 
     #inDB
     #name;
     #temperature;
-    #contition;
+    #condition;
     #conditionPic;
 
-    constructor({name, temperature, contition, conditionPic},inDB=false){
+    constructor({name, temperature, condition, conditionPic},inDB=false){
         this.#conditionPic = conditionPic;
         this.name = name;
-        this.#contition = contition;
+        this.#condition = condition;
         this.#temperature= temperature;
         this.#inDB = inDB;
     }
@@ -37,12 +37,12 @@ class WheatherModel {
         this.#temperature = value;
     }
 
-    get contition(){
-        return this.#contition
+    get condition(){
+        return this.#condition
     }
 
-    set contition(value){
-        this.#contition = value;
+    set condition(value){
+        this.#condition = value;
     }
 
     get conditionPic(){
@@ -53,11 +53,13 @@ class WheatherModel {
         this.#conditionPic = value;
     }
 
-    static fromApi(wheather){
-        return new WheatherModel(wheather,true)
+    static fromApi(weather){
+        return {...weather, inDB:true}
+        // return new WeatherModel(weather,true)
     }
 
-    static fromSearch(wheather){
-        return new WheatherModel(wheather,false)
+    static fromSearch(weather){
+        return {...weather, inDB:false}
+        // return new WeatherModel(weather,false)
     }
 }

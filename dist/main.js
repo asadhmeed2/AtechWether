@@ -1,20 +1,20 @@
 const weatherModule = new WeatherModule();
-const renderrer = new Renderrer();
+const renderer = new Renderer();
 
 const searchInput = $('#search-input');
 
 
 async function initCitiesList(){
     const cities = await weatherModule.getAll();
-    renderrer.render(cities);
+    renderer.render(cities);
 }
 
 initCitiesList();
 
 async function search(){
-    const tearm = searchInput.val();
-    if(tearm){
-        const weatherList = await weatherModule.search(tearm);
+    const term = searchInput.val();
+    if(term){
+        const weatherList = await weatherModule.search(term);
         console.log(weatherList);
     }else{
         alert("the search input is empty");
