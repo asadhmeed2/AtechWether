@@ -35,6 +35,7 @@ router.post('/', function (req, res) {
     }
 })
 
+// cityName 
 router.delete ('/:id', function (req, res) {
     const wetherId = req.params.id;
     

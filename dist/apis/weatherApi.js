@@ -1,6 +1,6 @@
 class WeatherApi{
 
-    async searchWeather(searchTearm){
+    async searchCity(searchTearm){
         const result =  $.ajax({
             type: 'GET',
             url:`${SERVER_API_WEATHER_ENDPOINT}/search`,
@@ -9,7 +9,15 @@ class WeatherApi{
         return result
     }
 
-    async addWeather(weather){
+    async getAll(){
+        const result =  $.ajax({
+            type: 'GET',
+            url:`${SERVER_API_WEATHER_ENDPOINT}/`,
+        })
+        return result
+    }
+
+    async addCity(weather){
         const result = await $.ajax({
             type: 'POST',
             url:`${SERVER_API_WEATHER_ENDPOINT}/`,
@@ -19,7 +27,7 @@ class WeatherApi{
         return result
     }
 
-    async deleteWeather(id){
+    async deleteCity(id){
         const result = await $.ajax({
             type: 'DELETE',
             url:`${SERVER_API_WEATHER_ENDPOINT}/${id}`,

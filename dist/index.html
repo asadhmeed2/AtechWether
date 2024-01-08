@@ -3,12 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
-    <input type="text" id="search-input">
-    <button onclick="search()">Search</button>
+    <div class="input-container">
+        <input type="text" id="search-input">
+        <button onclick="search()">Search</button>
+    </div>
 
+    <div class="weather-container"></div>
+
+    <script id="weather-card-template" type="text/x-handlebars-template">
+        <div class="weather-card">
+            <div class="">{{addRemoveButton}}</div>
+            <div class="">{{}}</div>
+        </div>
+    </script>
 
     <script src="handlebars/dist/handlebars.min.js"></script>
     <script src="jquery/dist/jquery.min.js"></script>
@@ -16,6 +27,7 @@
     <script src="./mappers/wheatherModel.js"></script>
     <script src="./apis/weatherApi.js"></script>
     <script src="./weatherModule.js"></script>
+    <script src="./renderr.js"></script>
     <script src="./main.js"></script>
 </body>
 </html>
