@@ -1,4 +1,4 @@
-const { WHEATHER_EXTERNAL_API ,WHEATHER_API_KEY} = require('../config/config')
+const { WEATHER_EXTERNAL_API: WEATHER_EXTERNAL_API , WEATHER_API_KEY, WEATHER_UNITS} = require('../config/config')
 
 const axios = require('axios');
 
@@ -7,10 +7,11 @@ const { ExtWeatherApiError } = require('../customErrors/customErrors');
 class WheatherExternalAPI {
 
 
-    async getWheatherByCity(city){
+    async getWeatherByCity(city){
+        const apiUrl = `${WEATHER_EXTERNAL_API}?q=${city}&appid=${WEATHER_API_KEY}&units=${WEATHER_UNITS}`
         try{
-            const wheathers = await axios.get(`${WHEATHER_EXTERNAL_API}?q=${city}&appid=${WHEATHER_API_KEY}`);
-            return wheathers
+            const weathers = await axios.get(apiUrl);
+            return weathers.data
         }catch(error){
             console.log(error);
             throw new ExtWeatherApiError()

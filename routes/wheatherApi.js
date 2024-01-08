@@ -1,13 +1,14 @@
 const express = require('express')
 const router = express.Router()
 
-const wheatherApiModule = require('../externalAPI/extWhetherAPI')
+const weatherApiModule = require('../externalAPI/extWhetherAPI')
 
 const Wether = require('../models/Wether')
+const MappingModule = require('../mappingModule/mappingModule')
 
 router.get('/', function (req, res) {
-    Wether.find({}).then( function (wheathers) {
-        res.send(wheathers)
+    Wether.find({}).then( function (weathers) {
+        res.send(weathers)
     })
 })
 
@@ -15,11 +16,14 @@ router.get('/search', async function (req, res) {
     const areaName = req.query.area;
 
     try{
-        const result = await wheatherApiModule.getWheatherByCity(areaName);
+        const result = await weatherApiModule.getWeatherByCity(areaName);
 
-        return  res.status(200).json(result)
+        const mappedResult = MappingModule.mapWeatherApiResult(result)
+
+        return  res.status(200).send(mappedResult)
     }catch(err){
-        return res.status(500).json({message: err.message})
+        console.log(err);
+        return res.status(500).send({message: err.message})
     }
 })
 
