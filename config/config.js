@@ -1,4 +1,4 @@
-const WHEATHER_EXTERNAL_API = 'https://openweathermap.org/data/2.5/find'
+const WHEATHER_EXTERNAL_API = 'https://api.openweathermap.org/data/2.5/weather'
 
 // https://openweathermap.org/data/2.5/find?q=haifa&appid=537adb295cc5b6ee173d2769e83e7c90&units=metric
 
