@@ -1,39 +1,37 @@
 const weatherApi = new WeatherApi()
 
 class WeatherModule{
-    #weatherList;
+    #citiesList;
 
     constructor(){
-        this.#weatherList = []
+        this.#citiesList = []
     }
 
-    get weatherList(){
-        return this.#weatherList;
+    get citiesList(){
+        return this.#citiesList;
     }
 
-    set weatherList(value){
-        this.#weatherList = value;
+    set citiesList(value){
+        this.#citiesList = value;
     }
 
 
     async search(term){
-      
             try{
-                
-                const results = await weatherApi.searchCity(term)
-                const mappedResults = results.map(item => WeatherModel.fromSearch(item))
-                return mappedResults
+                const result = await weatherApi.searchCity(term)
+                const mappedResult = WeatherModel.fromSearch(result)
+                this.#citiesList = [...this.#citiesList,mappedResult]
+                return this.#citiesList
             }catch(e){
                 console.error(e);
             }
-        
-        
     }
 
     async getAll(){
         try{
             const results = await weatherApi.getAll();
             const mappedResults = results.map(item => WeatherModel.fromApi(item))
+            this.#citiesList = mappedResults
             return mappedResults
         }catch(e){
             console.error(e);
@@ -43,7 +41,9 @@ class WeatherModule{
     async addCity(city){
         try{
             const results = await weatherApi.addCity(city)
-            return results
+            const idx = this.#citiesList.findIndex(cty => cty.name === city.name);
+            this.#citiesList.splice(idx,1,WeatherModel.fromApi(results))
+            return this.#citiesList
         }catch(e){
             console.error(e);
         }
@@ -51,10 +51,20 @@ class WeatherModule{
 
     async removeCity(id){
         try{
-            const results = await weatherApi.deleteCity(id)
-            return results
+            const result = await weatherApi.deleteCity(id)
+            const idx = this.#citiesList.findIndex(cty => cty._id === id);
+            this.#citiesList.splice(idx,1,WeatherModel.fromSearch(result))
+            return this.#citiesList
         }catch(e){
             console.error(e);
         }
     }
+
+    getCityById(id){
+            const city = this.#citiesList.find(cty => cty._id === id);
+            return city
+    }
+
+
+    
 }

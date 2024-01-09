@@ -15,25 +15,25 @@
     <div class="cities-container"></div>
 
     <script id="weather-card-template" type="text/x-handlebars-template">
-        <div class="weather-card">
+        <div class="weather-card" id={{_id}}>
             <div class="btn-card-container">
                 {{#if inDB}}
-                        <span class="remove-add-btn red">-</span>
+                        <div class="remove-add-btn gg-remove remove-btn"></div>
                 {{else }}
-                        <span  class="remove-add-btn green">+</span>
+                        <div  class="remove-add-btn gg-add add-btn"></div>
                 {{/if}}
             </div>
             
             <div class="weather-card-data">
-                <div class="">
-                    <div class="temperature">{{temperature}}</div>
-                    <div class="name">{{name}}</div>
+                <div class="temp-section" >
+                    <div class="temperature" data-temp="{{temperature}}">{{temperature}}°C</div>
+                    <div class="name" data-name="{{name}}">{{name}}</div>
                 </div>
-                <div class="">
-                    <div class="weather-condition-pic">
-                        <img src="http://openweathermap.org/img/wn/{{conditionPic}}@2x.png" width="{{imgWidth}}px" height="{{imgHeight}}px" alt="">
+                <div class="condition-section">
+                    <div class="weather-condition" data-condition="{{condition}}">{{condition}}</div>
+                    <div class="weather-condition-pic" data-conpic="{{conditionPic}}">
+                        <img src="http://openweathermap.org/img/wn/{{conditionPic}}@2x.png" alt="">
                     </div>
-                    <div class="weather-condition">{{condition}}</div>
                 </div>
             </div>
            

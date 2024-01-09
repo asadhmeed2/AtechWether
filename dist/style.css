@@ -20,6 +20,7 @@ body{
     flex-direction: column;
     align-items: center;
     padding-block: 10px;
+    gap: 10px;
 }
 
 .weather-card{
@@ -42,12 +43,110 @@ body{
     display: flex;
     justify-content:center;
     align-items: center;
-    width: 50px;
 }
 
 .remove-add-btn{
-    border-radius: 50%;
-    background-color:rgb(217, 114, 114);
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    
     color: white;
-    padding: 5px;
+    
 }
+
+.remove-add-btn:hover{
+    cursor: pointer;
+}
+
+.remove-btn{
+    background-color:rgb(217, 114, 114);
+    font-size: 50px;
+    line-height: 0;
+}
+
+.remove-btn:hover{
+    background-color:rgb(215, 133, 133);
+    
+}
+
+.add-btn{
+    background-color: rgb(2, 107, 2);
+}
+
+.add-btn:hover{
+    background-color: rgb(2, 139, 2);
+}
+
+.temp-section{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.temp-section div{
+    height: 50%;
+}
+
+
+.condition-section img{
+    height: 100px;
+}
+
+
+.gg-add {
+    box-sizing: border-box;
+    position: relative;
+    display: block;
+    width: 22px;
+    height: 22px;
+    border: 2px solid;
+    transform: scale(var(--ggs,1));
+    border-radius: 22px
+ }
+ .gg-add::after,
+ .gg-add::before {
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+    width: 10px;
+    height: 2px;
+    background: currentColor;
+    border-radius: 5px;
+    top: 8px;
+    left: 4px
+ }
+ .gg-add::after {
+    width: 2px;
+    height: 10px;
+    top: 4px;
+    left: 8px
+ }
+
+ .gg-remove {
+    box-sizing: border-box;
+    position: relative;
+    display: block;
+    transform: scale(var(--ggs,1));
+    width: 22px;
+    height: 22px;
+    border: 2px solid;
+    border-radius: 22px
+   }
+   
+   .gg-remove::before {
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+    width: 10px;
+    height: 2px;
+    background: currentColor;
+    border-radius: 5px;
+    top: 8px;
+    left: 4px
+   } 
+
